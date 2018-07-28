@@ -1,4 +1,4 @@
-from m5stack import lcd
+from m5stack import *
 import machine
 
 sec = 0
@@ -19,6 +19,10 @@ def tcb(timer):
         min = 0
         t1.deinit()
 
+def on_wasPressed():
+  global t1
+  t1.deinit()
+
 lcd.clear()
 lcd.setColor(lcd.WHITE)
 lcd.font(lcd.FONT_7seg, fixedwidth=True, dist=64, width=2)
@@ -26,3 +30,5 @@ lcd.text(lcd.CENTER, lcd.CENTER, "START")
 
 t1 = machine.Timer(2)
 t1.init(period=1000, mode=t1.PERIODIC, callback=tcb)
+
+buttonB.wasPressed(on_wasPressed)
