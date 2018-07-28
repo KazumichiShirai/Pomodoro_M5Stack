@@ -19,9 +19,14 @@ def tcb(timer):
         min = 0
         t1.deinit()
 
-def on_wasPressed():
+def on_wasPressed_B():
   global t1
   t1.deinit()
+
+def on_wasPressed_C():
+  global t1
+  t1.init(period=1000, mode=t1.PERIODIC, callback=tcb)
+
 
 lcd.clear()
 lcd.setColor(lcd.WHITE)
@@ -31,4 +36,5 @@ lcd.text(lcd.CENTER, lcd.CENTER, "START")
 t1 = machine.Timer(2)
 t1.init(period=1000, mode=t1.PERIODIC, callback=tcb)
 
-buttonB.wasPressed(on_wasPressed)
+buttonB.wasPressed(on_wasPressed_B)
+buttonC.wasPressed(on_wasPressed_C)
