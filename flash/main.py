@@ -8,7 +8,8 @@ def tcb(timer):
     global t1
     sec += 1
     lcd.clear()
-    lcd.text(lcd.CENTER, lcd.CENTER, "26:00")
+    text = "26:"+'{0:02d}'.format(sec)
+    lcd.text(lcd.CENTER, lcd.CENTER, text)
     if sec >= 59:
         sec = 0
         t1.deinit()
