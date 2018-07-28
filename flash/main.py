@@ -1,9 +1,17 @@
 from m5stack import lcd
 import machine
 
+sec = 0
+
 def tcb(timer):
+    global sec
+    global t1
+    sec += 1
     lcd.clear()
     lcd.text(lcd.CENTER, lcd.CENTER, "26:00")
+    if sec >= 59:
+        sec = 0
+        t1.deinit()
 
 lcd.clear()
 lcd.setColor(lcd.WHITE)
